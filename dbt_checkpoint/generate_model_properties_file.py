@@ -2,21 +2,23 @@ import argparse
 import os
 import time
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any
+from typing import Dict
+from typing import Optional
+from typing import Sequence
 
-from yaml import dump, safe_load
+from yaml import dump
+from yaml import safe_load
 
 from dbt_checkpoint.tracking import dbtCheckpointTracking
-from dbt_checkpoint.utils import (
-    JsonOpenError,
-    Model,
-    add_catalog_args,
-    add_default_args,
-    get_dbt_catalog,
-    get_dbt_manifest,
-    get_filenames,
-    get_models,
-)
+from dbt_checkpoint.utils import add_catalog_args
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_catalog
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import get_filenames
+from dbt_checkpoint.utils import get_models
+from dbt_checkpoint.utils import JsonOpenError
+from dbt_checkpoint.utils import Model
 
 
 def append_to_properties_file(path: Path, model_schema: Dict[str, Any]) -> None:

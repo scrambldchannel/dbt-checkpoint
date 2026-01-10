@@ -138,15 +138,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser()
     add_default_args(parser)  # Adds common args like --manifest, --filenames, etc.
     # Add hook-specific arguments
-    
+
     args = parser.parse_args(argv)
-    
+
     try:
         manifest = get_dbt_manifest(args)
     except JsonOpenError as e:
         print(f"Unable to load manifest file ({e})")
         return 1
-    
+
     return your_check_function(
         paths=args.filenames,
         manifest=manifest,
@@ -333,4 +333,3 @@ dbt-checkpoint/
 5. **Ask Questions**: Don't hesitate to ask for clarification
 
 Thank you for contributing to dbt-checkpoint! 🎉
-

@@ -1,12 +1,13 @@
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
+from unittest.mock import patch
 
 import pytest
 
+from dbt_checkpoint.check_database_casing_consistency import _find_inconsistent_objects
 from dbt_checkpoint.check_database_casing_consistency import (
-    _find_inconsistent_objects,
     check_database_casing_consistency,
-    main,
 )
+from dbt_checkpoint.check_database_casing_consistency import main
 
 
 @pytest.fixture

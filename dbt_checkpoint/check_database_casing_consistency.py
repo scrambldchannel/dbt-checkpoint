@@ -1,15 +1,16 @@
 import argparse
-from typing import Any, Dict, Optional, Sequence
+from typing import Any
+from typing import Dict
+from typing import Optional
+from typing import Sequence
 
-from dbt_checkpoint.utils import (
-    JsonOpenError,
-    add_catalog_args,
-    add_default_args,
-    get_dbt_catalog,
-    get_dbt_manifest,
-    red,
-    strings_differ_in_case,
-)
+from dbt_checkpoint.utils import add_catalog_args
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_catalog
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import JsonOpenError
+from dbt_checkpoint.utils import red
+from dbt_checkpoint.utils import strings_differ_in_case
 
 
 def _find_inconsistent_objects(
@@ -31,12 +32,12 @@ def _find_inconsistent_objects(
             manifest_objects[object].get("schema", ""),
             catalog_objects[object].get("metadata", {}).get("schema", ""),
         ):
-            result["manifest"] = (
-                f"{manifest_objects[object].get('database')}.{manifest_objects[object].get('schema')}"
-            )
-            result["catalog"] = (
-                f"{catalog_objects[object].get('metadata').get('database')}.{catalog_objects[object].get('metadata').get('schema')}"
-            )
+            result[
+                "manifest"
+            ] = f"{manifest_objects[object].get('database')}.{manifest_objects[object].get('schema')}"
+            result[
+                "catalog"
+            ] = f"{catalog_objects[object].get('metadata').get('database')}.{catalog_objects[object].get('metadata').get('schema')}"
         if result:
             result_message = f"{red(result['manifest'])} in dbt project (manifest) does not match {red(result['catalog'])} in database (catalog)"
             results.add(result_message)

@@ -2,7 +2,8 @@ from unittest.mock import patch
 
 import pytest
 
-from dbt_checkpoint.check_script_ref_and_source import check_refs_sources, main
+from dbt_checkpoint.check_script_ref_and_source import check_refs_sources
+from dbt_checkpoint.check_script_ref_and_source import main
 from dbt_checkpoint.utils import get_json
 
 # Input, expected return value, expected output

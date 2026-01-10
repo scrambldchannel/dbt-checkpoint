@@ -2,25 +2,31 @@ import argparse
 import os
 import time
 from pathlib import Path
-from typing import Any, Dict, FrozenSet, Optional, Sequence, Set, Tuple
+from typing import Any
+from typing import Dict
+from typing import FrozenSet
+from typing import Optional
+from typing import Sequence
+from typing import Set
+from typing import Tuple
 
 from dbt_checkpoint.tracking import dbtCheckpointTracking
-from dbt_checkpoint.utils import (
-    JsonOpenError,
-    add_catalog_args,
-    add_default_args,
-    get_dbt_catalog,
-    get_dbt_manifest,
-    get_json,
-    get_source_schemas,
-)
+from dbt_checkpoint.utils import add_catalog_args
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_catalog
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import get_json
+from dbt_checkpoint.utils import get_source_schemas
+from dbt_checkpoint.utils import JsonOpenError
 
 
 def compare_source_columns(
     catalog_columns: Dict[str, Any], schema_columns: Sequence[Dict[str, Any]]
 ) -> Tuple[Set[str], Set[str]]:
     catalog_cols = {col.lower() for col in catalog_columns.keys()}
-    schema_cols = {str(col.get("name")).lower() for col in schema_columns if col.get("name")}
+    schema_cols = {
+        str(col.get("name")).lower() for col in schema_columns if col.get("name")
+    }
     schema_only = schema_cols.difference(catalog_cols)
     catalog_only = catalog_cols.difference(schema_cols)
     return schema_only, catalog_only

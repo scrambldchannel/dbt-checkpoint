@@ -3,17 +3,18 @@ import os
 import time
 from itertools import groupby
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any
+from typing import Dict
+from typing import Optional
+from typing import Sequence
 
 from dbt_checkpoint.tracking import dbtCheckpointTracking
-from dbt_checkpoint.utils import (
-    JsonOpenError,
-    Test,
-    add_default_args,
-    get_dbt_manifest,
-    get_parent_childs,
-    get_source_schemas,
-)
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import get_parent_childs
+from dbt_checkpoint.utils import get_source_schemas
+from dbt_checkpoint.utils import JsonOpenError
+from dbt_checkpoint.utils import Test
 
 
 def check_test_cnt(

@@ -3,13 +3,18 @@ import os
 import time
 from collections import Counter
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any
+from typing import Dict
+from typing import Optional
+from typing import Sequence
 
 import yaml
 
 from dbt_checkpoint.check_column_desc_are_same import get_grouped
 from dbt_checkpoint.tracking import dbtCheckpointTracking
-from dbt_checkpoint.utils import JsonOpenError, add_default_args, get_dbt_manifest
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import JsonOpenError
 
 
 def _replace_desc(path: Path, column_name: str, description: str) -> None:

@@ -5,25 +5,23 @@ from unittest.mock import patch
 
 import pytest
 
-from dbt_checkpoint.utils import (
-    CalledProcessError,
-    CompilationException,
-    MacroSchema,
-    Model,
-    ModelSchema,
-    SourceSchema,
-    check_yml_version,
-    cmd_output,
-    extend_dbt_project_dir_flag,
-    get_dbt_catalog,
-    get_dbt_manifest,
-    get_filenames,
-    get_macro_schemas,
-    get_missing_file_paths,
-    get_model_schemas,
-    obj_in_deps,
-    paths_to_dbt_models,
-)
+from dbt_checkpoint.utils import CalledProcessError
+from dbt_checkpoint.utils import check_yml_version
+from dbt_checkpoint.utils import cmd_output
+from dbt_checkpoint.utils import CompilationException
+from dbt_checkpoint.utils import extend_dbt_project_dir_flag
+from dbt_checkpoint.utils import get_dbt_catalog
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import get_filenames
+from dbt_checkpoint.utils import get_macro_schemas
+from dbt_checkpoint.utils import get_missing_file_paths
+from dbt_checkpoint.utils import get_model_schemas
+from dbt_checkpoint.utils import MacroSchema
+from dbt_checkpoint.utils import Model
+from dbt_checkpoint.utils import ModelSchema
+from dbt_checkpoint.utils import obj_in_deps
+from dbt_checkpoint.utils import paths_to_dbt_models
+from dbt_checkpoint.utils import SourceSchema
 
 
 def test_cmd_output_error():

@@ -1,7 +1,8 @@
 import pytest
 from yaml import safe_dump
 
-from dbt_checkpoint.utils import CompilationException, get_config_file
+from dbt_checkpoint.utils import CompilationException
+from dbt_checkpoint.utils import get_config_file
 
 
 @pytest.fixture

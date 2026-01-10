@@ -2,18 +2,19 @@ import argparse
 import os
 import re
 import time
-from typing import Any, Dict, Optional, Sequence
+from typing import Any
+from typing import Dict
+from typing import Optional
+from typing import Sequence
 
 from dbt_checkpoint.check_script_has_no_table_name import replace_comments
 from dbt_checkpoint.tracking import dbtCheckpointTracking
-from dbt_checkpoint.utils import (
-    JsonOpenError,
-    add_default_args,
-    get_dbt_manifest,
-    get_filenames,
-    get_manifest_node_from_file_path,
-    red,
-)
+from dbt_checkpoint.utils import add_default_args
+from dbt_checkpoint.utils import get_dbt_manifest
+from dbt_checkpoint.utils import get_filenames
+from dbt_checkpoint.utils import get_manifest_node_from_file_path
+from dbt_checkpoint.utils import JsonOpenError
+from dbt_checkpoint.utils import red
 
 
 def obj_exists_in_manifest(
