@@ -150,6 +150,8 @@ Since the root-level `exclude` statement is handled by pre-commit, when those ho
 
 :exclamation:**If you have a suggestion for a new hook or you find a bug, [let us know](https://github.com/dbt-checkpoint/dbt-checkpoint/issues/new)**:exclamation:
 
+:handshake:**Want to contribute? Check out our [Contributing Guide](CONTRIBUTING.md)**:handshake:
+
 ## Install
 
 For detailed installation and usage, instructions see [pre-commit.com](https://pre-commit.com) site.
