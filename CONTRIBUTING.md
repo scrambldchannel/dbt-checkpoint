@@ -52,7 +52,7 @@ pre-commit run --all-files
 
 ### Running Tests
 
-The project uses `pytest` for testing. You can run tests in several ways:
+The project uses `pytest` for testing:
 
 ```bash
 # Run all tests
@@ -64,18 +64,20 @@ pytest --cov=dbt_checkpoint
 # Run a specific test file
 pytest tests/unit/test_check_model_has_meta_keys.py
 
-# Run tests for a specific Python version using tox
-tox -e py311  # Replace with your Python version
+# Run a specific test function
+pytest tests/unit/test_check_model_has_meta_keys.py::test_check_model_has_meta_keys -v
+
+# Show print output
+pytest -v -s
 ```
+
+> **Tip:** For running tests in isolated environments across Python versions, use [tox](#using-tox) instead.
 
 ### Code Quality Checks
 
 The project enforces code quality through pre-commit hooks and tox:
 
 ```bash
-# Run all code quality checks via tox
-tox -e pre-commit
-
 # Or run individual checks manually:
 # Format code with black
 black dbt_checkpoint tests
@@ -89,6 +91,50 @@ mypy dbt_checkpoint
 # Reorder imports
 reorder-python-imports --py3-plus dbt_checkpoint tests
 ```
+
+### Using Tox
+
+[Tox](https://tox.wiki/) automates testing across multiple Python versions and runs the full test suite in isolated environments. This is the same setup used by CI.
+
+**Available environments:**
+
+| Environment | Command | Description |
+|-------------|---------|-------------|
+| `py38` - `py312` | `tox -e py311` | Run tests for a specific Python version |
+| `pypy3` | `tox -e pypy3` | Run tests on PyPy |
+| `pre-commit` | `tox -e pre-commit` | Run all code quality checks (black, flake8, mypy, etc.) |
+| `cov-report` | `tox -e cov-report` | Generate coverage reports (terminal, HTML, XML) |
+
+**Common commands:**
+
+```bash
+# Install tox if you haven't already
+pip install tox
+
+# Run tests for your current Python version
+tox -e py311  # Replace with your version (py38, py39, py310, py311, py312)
+
+# Run all code quality checks
+tox -e pre-commit
+
+# Run tests on all supported Python versions (requires all versions installed)
+tox
+
+# Run tests with coverage report
+tox -e cov-report
+# Coverage HTML report will be in htmlcov/
+
+# Pass additional pytest arguments
+tox -e py311 -- tests/unit/test_check_model_has_meta_keys.py -v
+
+# List all available environments
+tox -l
+```
+
+**Tips:**
+- Use `tox -e py311` (single environment) during development for faster feedback
+- Run the full `tox` suite before submitting a PR to catch cross-version issues
+- The `pre-commit` environment runs the same checks as `pre-commit run --all-files`
 
 ### Code Style Guidelines
 
