@@ -15,7 +15,6 @@ from typing import Set
 from typing import Text
 from typing import Union
 
-
 from yaml import safe_load
 
 DEFAULT_MANIFEST_PATH = "target/manifest.json"
@@ -761,7 +760,7 @@ def get_missing_file_paths(
     include_ephemeral: bool = False,
     extensions: Sequence[str] = [".sql", ".yml", ".yaml"],
     exclude_pattern: str = "",
-) -> Set[str]:
+) -> List[str]:
     nodes = manifest.get("nodes", {})
     paths_with_missing = set(paths)
     if nodes:
